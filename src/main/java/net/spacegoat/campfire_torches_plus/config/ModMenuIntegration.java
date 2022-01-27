@@ -1,4 +1,4 @@
-package net.spacegoat.id.config;
+package net.spacegoat.campfire_torches_plus.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

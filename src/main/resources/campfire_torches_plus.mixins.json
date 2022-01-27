@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.spacegoat.campfire_torches_plus",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "CampfireBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

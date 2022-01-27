@@ -1,35 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "id",
+  "id": "campfire_torches_plus",
   "version": "${version}",
 
-  "name": "Example",
-  "description": "",
+  "name": "Campfire Torches Plus",
+  "description": "You can now make torches by left clicking campfires with sticks.",
   "authors": [
     "spacegoat3"
   ],
   "contact": {
-    "homepage": "https://github.com/spacegoat3/",
-    "issues": "https://github.com/spacegoat3/"
+    "homepage": "https://github.com/spacegoat3/CampfireTorchesPlus",
+    "issues": "https://github.com/spacegoat3/CampfireTorchesPlus/issues"
   },
 
   "license": "MIT",
-  "icon": "icon.png",
+  "icon": "campfire_torches_plus.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.spacegoat.id.ModMain"
+      "net.spacegoat.campfire_torches_plus.ModMain"
     ],
     "modmenu": [
-      "net.spacegoat.id.config.ModMenuIntegration"
-    ],
-    "client": [
-      "net.spacegoat.id.ModClient"
+      "net.spacegoat.campfire_torches_plus.config.ModMenuIntegration"
     ]
   },
   "mixins": [
-    "id.mixins.json"
+    "campfire_torches_plus.mixins.json"
   ],
 
   "depends": {

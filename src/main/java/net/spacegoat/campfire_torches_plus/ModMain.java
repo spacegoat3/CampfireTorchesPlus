@@ -1,4 +1,4 @@
-package net.spacegoat.id;
+package net.spacegoat.campfire_torches_plus;
 
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
