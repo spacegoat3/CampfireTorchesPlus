@@ -1,0 +1,14 @@
+{
+  "text.autoconfig.campfire_torches_plus.title": "Campfire Torches Plus Config",
+
+  "text.autoconfig.campfire_torches_plus.category.default": "Torch",
+  "text.autoconfig.campfire_torches_plus.option.CampfireTorch.enableCampfireTorch": "Enable Campfire Torch",
+  "text.autoconfig.campfire_torches_plus.option.CampfireTorch.stickCost": "Stick Cost",
+  "text.autoconfig.campfire_torches_plus.option.CampfireTorch.playCustomSoundEffect": "Play Custom Sound Effect",
+
+  "text.autoconfig.campfire_torches_plus.category.soul_campfire_torch": "Soul Torch",
+  "text.autoconfig.campfire_torches_plus.option.SoulCampfireTorch.enableSoulCampfireTorch": "Enable Soul Campfire Torch",
+  "text.autoconfig.campfire_torches_plus.option.SoulCampfireTorch.stickCost": "Stick Cost",
+  "text.autoconfig.campfire_torches_plus.option.SoulCampfireTorch.playCustomSoundEffect": "Play Custom Sound Effect",
+  "text.autoconfig.campfire_torches_plus.option.SoulCampfireTorch.playSoulSandSoundEffect": "Play Soul Sand Sound Effect"
+}

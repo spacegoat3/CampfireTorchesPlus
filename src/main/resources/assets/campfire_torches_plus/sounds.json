@@ -1,0 +1,8 @@
+{
+  "lit_torch": {
+    "subtitle": "subtitle.campfire_torches_plus.lit_torch",
+    "sounds": [
+      "campfire_torches_plus:lit_torch"
+    ]
+  }
+}

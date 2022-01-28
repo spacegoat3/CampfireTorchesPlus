@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Campfire Torches Plus",
-  "description": "You can now make torches by left clicking campfires with sticks.",
+  "description": "You can now make torches by left clicking campfires with a stick on your hand. Torches vary depending on campfire type.",
   "authors": [
     "spacegoat3"
   ],
