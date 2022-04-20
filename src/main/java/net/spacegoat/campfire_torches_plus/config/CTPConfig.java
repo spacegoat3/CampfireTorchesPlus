@@ -6,18 +6,18 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
-import net.spacegoat.campfire_torches_plus.ModMain;
+import net.spacegoat.campfire_torches_plus.CTPMain;
 
-@Config(name = ModMain.MOD_ID)
-public class ModConfig implements ConfigData {
+@Config(name = CTPMain.MOD_ID)
+public class CTPConfig implements ConfigData {
     @ConfigEntry.Gui.Excluded
     private transient static boolean registered = false;
-    public static synchronized ModConfig getConfig() {
+    public static synchronized CTPConfig getConfig() {
         if (!registered) {
-            AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
+            AutoConfig.register(CTPConfig.class, JanksonConfigSerializer::new);
             registered = true;
         }
-        return AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        return AutoConfig.getConfigHolder(CTPConfig.class).getConfig();
     }
     @ConfigEntry.Gui.TransitiveObject
     public CampfireTorch CampfireTorch = new CampfireTorch();

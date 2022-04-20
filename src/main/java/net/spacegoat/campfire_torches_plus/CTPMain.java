@@ -7,7 +7,7 @@ import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ModMain implements ModInitializer {
+public class CTPMain implements ModInitializer {
 	public static final String MOD_ID = "campfire_torches_plus";
 
 	public static final Identifier TORCH_SOUND = new Identifier(MOD_ID, "lit_torch");

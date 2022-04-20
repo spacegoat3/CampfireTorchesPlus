@@ -19,10 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.spacegoat.campfire_torches_plus.ModMain"
+      "net.spacegoat.campfire_torches_plus.CTPMain"
     ],
     "modmenu": [
-      "net.spacegoat.campfire_torches_plus.config.ModMenuIntegration"
+      "net.spacegoat.campfire_torches_plus.config.CTPModMenu"
     ]
   },
   "mixins": [
@@ -32,9 +32,9 @@
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": ["1.17", "1.17.1", "1.18", "1.18.1"],
+    "minecraft": ["1.18.2"],
     "java": ">=16",
-    "cloth-config2": ">=5.0.34"
+    "cloth-config2": "*"
   },
   "suggests": {
     "another-mod": "*",
