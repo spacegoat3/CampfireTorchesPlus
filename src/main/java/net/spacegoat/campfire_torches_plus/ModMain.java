@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 public class ModMain implements ModInitializer {
 	public static final String MOD_ID = "campfire_torches_plus";
-	public static final Logger LOGGER = LoggerFactory.getLogger("campfire_torches_plus");
 
 	public static final Identifier TORCH_SOUND = new Identifier(MOD_ID, "lit_torch");
 	public static SoundEvent PLAYER_LIT_TORCH = new SoundEvent(TORCH_SOUND);

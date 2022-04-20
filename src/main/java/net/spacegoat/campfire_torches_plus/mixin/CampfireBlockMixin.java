@@ -39,7 +39,7 @@ public class CampfireBlockMixin extends Block {
     private void onUseMixin(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> info, BlockEntity blockEntity){
         ItemStack itemStack = player.getStackInHand(hand);
         Item item = itemStack.getItem();
-        if (item == Items.STICK && state.isOf(Blocks.CAMPFIRE) && ModConfig.getConfig().CampfireTorch.enableCampfireTorch && state.get(LIT)){
+        if (item == Items.STICK && state.isOf(Blocks.CAMPFIRE) && state.get(LIT) && ModConfig.getConfig().CampfireTorch.enableCampfireTorch){
             if (ModConfig.getConfig().CampfireTorch.playCustomSoundEffect) {
                 world.playSound(player, pos, ModMain.PLAYER_LIT_TORCH, SoundCategory.PLAYERS, 1, 1);
             }
@@ -50,7 +50,7 @@ public class CampfireBlockMixin extends Block {
             player.incrementStat(Stats.INTERACT_WITH_CAMPFIRE);
             info.setReturnValue(ActionResult.SUCCESS);
         }
-        if (item == Items.STICK && state.isOf(Blocks.SOUL_CAMPFIRE) && ModConfig.getConfig().SoulCampfireTorch.enableSoulCampfireTorch && state.get(LIT)){
+        if (item == Items.STICK && state.isOf(Blocks.SOUL_CAMPFIRE) && state.get(LIT) && ModConfig.getConfig().SoulCampfireTorch.enableSoulCampfireTorch){
             if (!player.isCreative()){
                 itemStack.decrement(ModConfig.getConfig().SoulCampfireTorch.stickCost);
             }

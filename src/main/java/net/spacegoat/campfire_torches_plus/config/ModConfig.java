@@ -29,6 +29,7 @@ public class ModConfig implements ConfigData {
         public boolean enableCampfireTorch = true;
         @Comment("The amount of sticks you will need to make a Torch.")
         public int stickCost = 1;
+        public boolean spawnParticles = true;
         @Comment("Plays a fire sound effect whenever you lit a Torch.")
         public boolean playCustomSoundEffect = true;
     }
@@ -37,6 +38,7 @@ public class ModConfig implements ConfigData {
         public boolean enableSoulCampfireTorch = true;
         @Comment("The amount of sticks you will need to make a Soul Torch.")
         public int stickCost = 1;
+        public boolean spawnParticles = true;
         @Comment("Plays a fire sound effect whenever you lit a Soul Torch.")
         public boolean playCustomSoundEffect = true;
         @Comment("Plays Soul Sand Block's sound effect whenever you lit a Soul Torch.")
