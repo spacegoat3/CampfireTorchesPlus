@@ -6,7 +6,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
@@ -37,32 +36,36 @@ public class CampfireBlockMixin extends Block {
     }
     @Inject(method = "onUse", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/player/PlayerEntity;getStackInHand(Lnet/minecraft/util/Hand;)Lnet/minecraft/item/ItemStack;"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
     private void onUseMixin(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> info, BlockEntity blockEntity){
-        ItemStack itemStack = player.getStackInHand(hand);
-        Item item = itemStack.getItem();
-        if (item == Items.STICK && (state.isOf(Blocks.CAMPFIRE) && itemStack.getCount() >= CTPConfig.getConfig().CampfireTorch.stickCost) && state.get(LIT) && CTPConfig.getConfig().CampfireTorch.enableCampfireTorch){
-            if (CTPConfig.getConfig().CampfireTorch.playCustomSoundEffect) {
-                world.playSound(player, pos, CTPMain.PLAYER_LIT_TORCH, SoundCategory.PLAYERS, 1, 1);
+        ItemStack item = player.getStackInHand(hand);
+        if (item.isOf(Items.STICK)) {
+            if (condition(Blocks.CAMPFIRE, CTPConfig.getConfig().CampfireTorch.enableCampfireTorch, CTPConfig.getConfig().CampfireTorch.stickCost, item, state)) {
+                if (!player.isCreative()) {
+                    item.decrement(CTPConfig.getConfig().CampfireTorch.stickCost);
+                }
+                if (CTPConfig.getConfig().CampfireTorch.playCustomSoundEffect) {
+                    world.playSound(player, pos, CTPMain.PLAYER_LIT_TORCH, SoundCategory.PLAYERS, 1, 1);
+                }
+                player.getInventory().insertStack(new ItemStack(Items.TORCH));
+                info.setReturnValue(ActionResult.SUCCESS);
             }
-            if (!player.isCreative()){
-                itemStack.decrement(CTPConfig.getConfig().CampfireTorch.stickCost);
+            if (condition(Blocks.SOUL_CAMPFIRE, CTPConfig.getConfig().SoulCampfireTorch.enableSoulCampfireTorch, CTPConfig.getConfig().SoulCampfireTorch.stickCost, item, state)) {
+                if (!player.isCreative()) {
+                    item.decrement(CTPConfig.getConfig().SoulCampfireTorch.stickCost);
+                }
+                if (CTPConfig.getConfig().SoulCampfireTorch.playCustomSoundEffect) {
+                    world.playSound(player, pos, CTPMain.PLAYER_LIT_TORCH, SoundCategory.PLAYERS, 1, 1);
+                }
+                if (CTPConfig.getConfig().SoulCampfireTorch.playSoulSandSoundEffect) {
+                    world.playSound(player, pos, SoundEvents.BLOCK_SOUL_SAND_PLACE, SoundCategory.PLAYERS, 0.5f, 0.5f);
+                }
+                player.getInventory().insertStack(new ItemStack(Items.SOUL_TORCH));
+                info.setReturnValue(ActionResult.SUCCESS);
             }
-            player.getInventory().insertStack(new ItemStack(Items.TORCH));
-            player.incrementStat(Stats.INTERACT_WITH_CAMPFIRE);
-            info.setReturnValue(ActionResult.SUCCESS);
         }
-        if (item == Items.STICK && (state.isOf(Blocks.CAMPFIRE) && itemStack.getCount() >= CTPConfig.getConfig().SoulCampfireTorch.stickCost) && state.get(LIT) && CTPConfig.getConfig().SoulCampfireTorch.enableSoulCampfireTorch){
-            if (!player.isCreative()){
-                itemStack.decrement(CTPConfig.getConfig().SoulCampfireTorch.stickCost);
-            }
-            player.getInventory().insertStack(new ItemStack(Items.SOUL_TORCH));
-            player.incrementStat(Stats.INTERACT_WITH_CAMPFIRE);
-            if (CTPConfig.getConfig().SoulCampfireTorch.playCustomSoundEffect) {
-                world.playSound(player, pos, CTPMain.PLAYER_LIT_TORCH, SoundCategory.PLAYERS, 1, 1);
-            }
-            if (CTPConfig.getConfig().SoulCampfireTorch.playSoulSandSoundEffect) {
-                world.playSound(player, pos, SoundEvents.BLOCK_SOUL_SAND_PLACE, SoundCategory.PLAYERS, 0.5f, 0.5f);
-            }
-            info.setReturnValue(ActionResult.SUCCESS);
-        }
+        player.incrementStat(Stats.INTERACT_WITH_CAMPFIRE);
+    }
+
+    private boolean condition(Block campfire, boolean enable, int cost, ItemStack item, BlockState state){
+        return state.isOf(campfire) && enable && item.getCount() >= cost && state.get(LIT);
     }
 }
